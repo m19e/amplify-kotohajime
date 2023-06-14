@@ -10,6 +10,11 @@
       "StackName": "amplify-kotohajime-staging-82655",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:474889538248:stack/amplify-kotohajime-staging-82655/3901f480-0a8d-11ee-8a19-06a1c746dd97",
       "AmplifyAppId": "d1hd2ybrmki6fz"
+    },
+    "categories": {
+      "auth": {
+        "Kotohajime": {}
+      }
     }
   }
 }
