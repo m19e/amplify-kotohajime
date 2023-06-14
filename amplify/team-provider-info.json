@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-kotohajime-staging-82655-authRole",
+      "UnauthRoleArn": "arn:aws:iam::474889538248:role/amplify-kotohajime-staging-82655-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::474889538248:role/amplify-kotohajime-staging-82655-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-kotohajime-staging-82655-deployment",
+      "UnauthRoleName": "amplify-kotohajime-staging-82655-unauthRole",
+      "StackName": "amplify-kotohajime-staging-82655",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:474889538248:stack/amplify-kotohajime-staging-82655/3901f480-0a8d-11ee-8a19-06a1c746dd97",
+      "AmplifyAppId": "d1hd2ybrmki6fz"
+    }
+  }
+}
