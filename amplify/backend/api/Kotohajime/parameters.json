@@ -1,0 +1,5 @@
+{
+  "AppSyncApiName": "Kotohajime",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false
+}
