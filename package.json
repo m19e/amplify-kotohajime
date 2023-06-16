@@ -28,7 +28,9 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "aws-crt": "^1.15.18",
     "daisyui": "^3.1.0",
+    "encoding": "^0.1.13",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-tailwindcss": "^3.12.1",
