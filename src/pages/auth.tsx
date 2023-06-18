@@ -1,18 +1,16 @@
 import { useState } from "react"
 
 import { Authenticator } from "@aws-amplify/ui-react"
-import { Amplify } from "aws-amplify"
+import { Amplify, DataStore } from "aws-amplify"
+import useSWR from "swr"
 import "@aws-amplify/ui-react/styles.css"
 import awsExports from "src/aws-exports"
 import { Tabs } from "src/components/Tabs"
-import {
-  Header,
-  BoardComponentCollection,
-  PersonComponentCollection,
-} from "src/ui-components"
+import { Board } from "src/models"
+import { Header } from "src/ui-components"
 import type { TabID } from "src/types"
 
-Amplify.configure(awsExports)
+Amplify.configure({ ...awsExports })
 
 const Auth = () => {
   const [tab, setTab] = useState<TabID>("list")
@@ -27,8 +25,7 @@ const Auth = () => {
             <div className="flex flex-col">
               <Tabs currentTab={tab} onSelect={setTab} />
               <div className="bg-white">
-                <BoardComponentCollection />
-                <PersonComponentCollection />
+                <Boards />
               </div>
             </div>
             <button className="btn-info btn" onClick={signOut}>
@@ -39,6 +36,29 @@ const Auth = () => {
       )}
     </Authenticator>
   )
+}
+
+const fetchBoards = async () => {
+  return await DataStore.query(Board).then(values =>
+    values.map(b => (
+      <li key={b.id}>
+        {b.message}({b.name})
+      </li>
+    )),
+  )
+}
+
+const Boards = () => {
+  const { data: boards, isLoading } = useSWR("/boards", fetchBoards, {
+    suspense: true,
+    fallbackData: [],
+  })
+
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+
+  return <ol className="my-3">{boards}</ol>
 }
 
 export default Auth
