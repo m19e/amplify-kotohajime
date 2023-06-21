@@ -17,4 +17,10 @@ export type AmplifyDependentResourcesAttributes = {
       UserPoolName: "string"
     }
   }
+  storage: {
+    s3kotohajimestoragefa52ae71: {
+      BucketName: "string"
+      Region: "string"
+    }
+  }
 }

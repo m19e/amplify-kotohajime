@@ -1,0 +1,8 @@
+{
+  "resourceName": "s3kotohajimestoragefa52ae71",
+  "bucketName": "kotohajime-storage-fa52ae71",
+  "policyUUID": "5514fff5",
+  "storageAccess": "authAndGuest",
+  "guestAccess": ["READ"],
+  "authAccess": ["CREATE_AND_UPDATE", "READ", "DELETE"]
+}

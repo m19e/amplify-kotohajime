@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "Kotohajime": {}
+      },
+      "storage": {
+        "s3kotohajimestoragefa52ae71": {}
       }
     }
   }
