@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import { Authenticator } from "@aws-amplify/ui-react"
 import { Storage, Amplify } from "aws-amplify"
+import type { S3ProviderListOutputItem } from "@aws-amplify/storage"
 import useSWR from "swr"
 import "@aws-amplify/ui-react/styles.css"
 import awsExports from "src/aws-exports"
@@ -16,12 +17,66 @@ const S3 = () => {
         <div className="p-4">
           <Header className="my-4" />
           <p>※これは新たに利用した表示です。</p>
-          <div className="rounded border border-primary px-3 py-2">
-            <Upload />
+          <div className="rounded border-2 border-slate-400 px-3 py-2">
+            <List />
           </div>
         </div>
       )}
     </Authenticator>
+  )
+}
+
+const fetcherList = async () => {
+  const data = await Storage.list("", { level: "protected" })
+
+  return data
+}
+
+const File = ({ file }: { file: S3ProviderListOutputItem }) => {
+  const handleDelete = () => {
+    Storage.remove(file.key ?? "", { level: "protected" }).then(() =>
+      alert(file.key + " を削除しました。"),
+    )
+  }
+
+  return (
+    <li className="join-item flex items-center justify-between border p-2">
+      <span>
+        {file.key} (size: {file.size})
+      </span>
+      <button className="btn-sm btn-circle btn" onClick={handleDelete}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </li>
+  )
+}
+
+const List = () => {
+  const { data } = useSWR("/list", fetcherList)
+  const items = data?.results.map(file => <File key={file.eTag} file={file} />)
+
+  return (
+    <div className="flex w-full flex-col items-center gap-2">
+      <h5 className="text-xl">
+        files at <span className="font-semibold">/protected/</span>
+      </h5>
+      <ul className="join-vertical join w-full rounded bg-white shadow">
+        {items}
+      </ul>
+    </div>
   )
 }
 
