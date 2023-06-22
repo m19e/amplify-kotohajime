@@ -98,7 +98,7 @@ const Upload = () => {
         onChange={e => setFileName(e.currentTarget.value)}
       />
       <textarea
-        className="rounded-lg p-4"
+        className="textarea-bordered textarea rounded-lg"
         rows={3}
         onChange={e => setContent(e.currentTarget.value)}
       />
