@@ -24,16 +24,32 @@ const S3 = () => {
 }
 
 const fetcher = async () => {
-  return await Storage.get("kuroneko.png", { level: "public" })
+  const data = await Storage.get("kuroneko.png", { level: "public" })
+  return <img src={data} alt="kuroneko" />
+}
+
+const fetcherText = async () => {
+  const data = await Storage.get("memories-of-kindness.txt", {
+    level: "public",
+    download: true,
+  })
+
+  const lines = (await (data.Body as Blob).text()).split("\n").map((l, i) => (
+    <li key={i} className="min-h-[1rem] whitespace-nowrap">
+      {l}
+    </li>
+  ))
+
+  return <ul>{lines}</ul>
 }
 
 const Sample = () => {
-  const { data, isLoading } = useSWR("/sample", fetcher)
+  const { data, isLoading } = useSWR("/sample", fetcherText)
   if (isLoading) {
     return <p>Loading...</p>
   }
 
-  return <img src={data} alt="" />
+  return <>{data}</>
 }
 
 export default S3
