@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import { Authenticator } from "@aws-amplify/ui-react"
 import { Storage, Amplify } from "aws-amplify"
 import useSWR from "swr"
@@ -14,8 +16,8 @@ const S3 = () => {
         <div className="p-4">
           <Header className="my-4" />
           <p>※これは新たに利用した表示です。</p>
-          <div className="border border-primary px-3 py-2">
-            <Sample />
+          <div className="rounded border border-primary px-3 py-2">
+            <Upload />
           </div>
         </div>
       )}
@@ -23,7 +25,38 @@ const S3 = () => {
   )
 }
 
-const fetcher = async () => {
+const Upload = () => {
+  const [fileName, setFileName] = useState("")
+  const [content, setContent] = useState("")
+
+  const handleUpload = async () => {
+    const name = fileName.includes(".") ? fileName : `${fileName}.txt`
+    await Storage.put(name, content, { level: "protected" })
+    alert(name + " を保存しました。")
+  }
+
+  return (
+    <div className="form-control space-y-2 py-2 pb-0">
+      <input
+        className="input"
+        type="text"
+        onChange={e => setFileName(e.currentTarget.value)}
+      />
+      <textarea
+        className="rounded-lg p-4"
+        rows={3}
+        onChange={e => setContent(e.currentTarget.value)}
+      />
+      <div className="flex justify-end">
+        <button className="btn-primary btn" onClick={handleUpload}>
+          upload
+        </button>
+      </div>
+    </div>
+  )
+}
+
+const _fetcher = async () => {
   const data = await Storage.get("kuroneko.png", { level: "public" })
   return <img src={data} alt="kuroneko" />
 }
