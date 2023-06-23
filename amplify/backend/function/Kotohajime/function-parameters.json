@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "api": {
+      "Kotohajime": ["Query", "Mutation"]
+    },
+    "storage": {
+      "s3kotohajimestoragefa52ae71": ["create", "read", "update", "delete"],
+      "Person:@model(appsync)": ["create", "read", "update", "delete"],
+      "Board:@model(appsync)": ["create", "read", "update", "delete"]
+    }
+  },
+  "lambdaLayers": []
+}

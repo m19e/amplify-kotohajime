@@ -17,6 +17,15 @@
       },
       "storage": {
         "s3kotohajimestoragefa52ae71": {}
+      },
+      "function": {
+        "Kotohajime": {
+          "deploymentBucketName": "amplify-kotohajime-staging-82655-deployment",
+          "s3Key": "amplify-builds/Kotohajime-66516671522b6c2f4876-build.zip"
+        }
+      },
+      "api": {
+        "Kotohajime": {}
       }
     }
   }

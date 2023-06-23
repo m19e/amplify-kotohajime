@@ -47,6 +47,47 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "Kotohajime": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "Kotohajime"
+        },
+        {
+          "attributes": ["BucketName"],
+          "category": "storage",
+          "resourceName": "s3kotohajimestoragefa52ae71"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_Kotohajime_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Kotohajime"
+        }
+      ]
+    },
+    "AMPLIFY_function_Kotohajime_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Kotohajime"
+        }
+      ]
+    }
+  },
   "storage": {
     "s3kotohajimestoragefa52ae71": {
       "dependsOn": [],
