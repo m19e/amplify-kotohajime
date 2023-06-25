@@ -21,7 +21,7 @@
       "function": {
         "Kotohajime": {
           "deploymentBucketName": "amplify-kotohajime-staging-82655-deployment",
-          "s3Key": "amplify-builds/Kotohajime-66516671522b6c2f4876-build.zip"
+          "s3Key": "amplify-builds/Kotohajime-2b5a342f36512f486379-build.zip"
         }
       },
       "api": {
